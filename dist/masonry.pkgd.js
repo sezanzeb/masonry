@@ -1674,7 +1674,7 @@ proto._getItemLayoutPosition = function( /* item */ ) {
 proto._processLayoutQueue = function( queue ) {
   this.updateStagger();
   queue.forEach( function( obj, i ) {
-    this._positionItem( obj.item, Math.round(obj.x), Math.round(obj.y), obj.isInstant, i );
+    this._positionItem( obj.item, obj.x, obj.y, obj.isInstant, i );
   }, this );
 };
 
@@ -1697,6 +1697,8 @@ proto.updateStagger = function() {
  * @param {Boolean} isInstant - disables transitions
  */
 proto._positionItem = function( item, x, y, isInstant, i ) {
+  x = Math.round(x)
+  y = Math.round(y)
   if ( isInstant ) {
     // if not transition, just set CSS
     item.goTo( x, y );
