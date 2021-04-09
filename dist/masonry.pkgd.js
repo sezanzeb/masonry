@@ -919,8 +919,8 @@ proto.getPosition = function() {
   x -= isOriginLeft ? layoutSize.paddingLeft : layoutSize.paddingRight;
   y -= isOriginTop ? layoutSize.paddingTop : layoutSize.paddingBottom;
 
-  this.position.x = x;
-  this.position.y = y;
+  this.position.x = Math.round(x);
+  this.position.y = Math.round(y);
 };
 
 // set settled position, apply padding
@@ -1674,7 +1674,7 @@ proto._getItemLayoutPosition = function( /* item */ ) {
 proto._processLayoutQueue = function( queue ) {
   this.updateStagger();
   queue.forEach( function( obj, i ) {
-    this._positionItem( obj.item, obj.x, obj.y, obj.isInstant, i );
+    this._positionItem( obj.item, Math.round(obj.x), Math.round(obj.y), obj.isInstant, i );
   }, this );
 };
 
